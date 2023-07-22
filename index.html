@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature converter</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h2 >Temperature Converter</h2>
+        <div class="temp-convert">
+            <label for="Celcius">Celcius</label>
+            <input type="number" name="celcius" id="Celcius" class="celcius" placeholder="Celcius">
+        </div>
+        <div class="temp-convert">
+            <label for="Fehrenheit">Fehrenheit</label>
+            <input type="number" name="Fehrenheit" id="Fehrenheit" class="Fehrenheit" placeholder="Fehrenheit">
+        </div>
+        <div class="temp-convert">
+            <label for="Kelvin">Kelvin</label>
+            <input type="number" name="Kelvin" id="Kelvin" class="Kelvin" placeholder="Kelvin">
+        </div>
+        
+    </div>
+    <script>
+        const cels=document.getElementById('Celcius');
+        const fehren=document.getElementById('Fehrenheit');
+        const kel=document.getElementById('Kelvin');
+
+        cels.addEventListener('input',function(){
+            let c= parseFloat(cels.value);
+            let f= (c*9/5)+32;
+            let k= c+273.15;
+            fehren.value=  f;
+            kel.value= k;
+        })
+        fehren.addEventListener('input',function(){
+            let f= parseFloat(fehren.value);
+            let c= (f-32)*5/9;
+            let k= ((f-32)*5/9)+273.15;
+            cels.value= c.toFixed(4);
+            kel.value= k.toFixed(4);
+        })
+        kel.addEventListener('input',function(){
+            let k= parseFloat(kel.value);
+            let c= k-273.15;
+            let f= ((k-273.15)*9/5)+32;
+            fehren.value= f;
+            cels.value= c;
+        })
+
+    </script>
+</body>
+</html>
